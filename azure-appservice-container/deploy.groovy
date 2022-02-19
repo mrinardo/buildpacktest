@@ -3,7 +3,7 @@ try {
     azureSetWebAppContainer steps: steps,
         resourceGroup: env.AZURE_RESOURCE_GROUP,
         webappName:    env.AZURE_WEBAPP_NAME,
-        imageWithTag: "${env.env.IMAGE_NAME}",
+        imageWithTag: env.IMAGE_NAME,
         containerRegistryURL: env.IMAGE_REGISTRY,
         containerRegistryUser: AZURE_CLIENT_ID, //DEPS_CREDENTIAL_USR,
         containerRegistryPwd: AZURE_CLIENT_SECRET //DEPS_CREDENTIAL_PSW,
