@@ -1,5 +1,5 @@
 // Parse properties used by "azure-appservice-container" project type
-def filename = "${GIT_PROJECT_DIR}/pipeline/properties.yaml"
+def filename = "./pipeline/properties.yaml"
 if(!fileExists(filename)) {
     error("Property file is ${filename} and does not exists")
 } else {
