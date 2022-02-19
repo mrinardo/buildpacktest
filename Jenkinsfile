@@ -55,21 +55,21 @@ node {
 	stage ("Preparação") {
 		script {
 			runFile steps:this,
-				file: "${BUILDPACK}/prep.groovy"
+				file: "${env.BUILDPACK}/prep.groovy"
 		}
 	}
 
 	stage('Dependências') {
 		script {
 			runFile steps: this,
-				file: "${BUILDPACK}/deps.groovy"
+				file: "${env.BUILDPACK}/deps.groovy"
 		}
 	}
 
 	stage('Deploy') {
 		script {
 			runFile steps:this,
-				file: "${BUILDPACK}/deploy.groovy"
+				file: "${env.BUILDPACK}/deploy.groovy"
 		}
 	}
 
