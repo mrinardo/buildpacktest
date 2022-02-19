@@ -37,9 +37,9 @@ if(!env.AZURE_WEBAPP_NAME) {
     error("Azure Web App name is missing in properties.yaml")
 }
 
-env.AZURE_DEPLOYMENT_SLOT = properties?.azure?.DEPLOYMENT_SLOTS?."${WORKFLOW_ENVIRONMENT}" ?: ""
+env.AZURE_DEPLOYMENT_SLOT = properties?.azure?.DEPLOYMENT_SLOTS?."${env.WORKFLOW_ENVIRONMENT}" ?: ""
 if(!env.AZURE_DEPLOYMENT_SLOT) {
-    println "Deployment Slot not set for '${WORKFLOW_ENVIRONMENT}' environment in properties.yaml. Using default 'PRODUCTION' Deployment Slot."
+    println "Deployment Slot not set for '${env.WORKFLOW_ENVIRONMENT}' environment in properties.yaml. Using default 'PRODUCTION' Deployment Slot."
 }
 
 env.AZURE_SUBSCRIPTION_ID = properties?.azure?.SUBSCRIPTION_ID ?: ""
@@ -61,19 +61,19 @@ if (env.PROJECT_TYPE == "container" || env.PROJECT_TYPE.isEmpty()) {
 withCredentials([usernamePassword(credentialsId: 'MySP', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
     // Secrets validations
     if(!env.AZURE_SUBSCRIPTION_ID) {
-        error("Azure Subscription ID not found for environment ${WORKFLOW_ENVIRONMENT}!")
+        error("Azure Subscription ID not found!")
     }
 
     if(!env.AZURE_TENANT_ID) {
-        error("Azure Tenant ID not found for environment ${WORKFLOW_ENVIRONMENT}!")
+        error("Azure Tenant ID not found!")
     }
 
     if(!env.AZURE_CLIENT_ID) {
-        error("Azure Client ID not found for environment ${WORKFLOW_ENVIRONMENT}!")
+        error("Azure Client ID not found!")
     }
 
     if(!env.AZURE_CLIENT_SECRET) {
-        error("Azure Client Secret not found for environment ${WORKFLOW_ENVIRONMENT}!")
+        error("Azure Client Secret not found!")
     }
 
     try {

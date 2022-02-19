@@ -5,7 +5,8 @@ pipeline {
 
 	environment {
 		BUILDPACK = "azure-appservice"
-		PROJECT_TYPE = "azure-appservice-container"
+		PROJECT_TYPE = "container"
+		WORKFLOW_ENVIRONMENT = ""
 
 		DEBUG = false
 		START_BUILD = new Date().format("EEE, MMM dd yyyy - HH:mm:ss")
