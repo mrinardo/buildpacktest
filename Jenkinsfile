@@ -2,7 +2,7 @@
 
 pipeline {
 	agent any
-	
+
 	environment {
 		BUILDPACK = "azure-appservice"
 		PROJECT_TYPE = "azure-appservice-container"
@@ -56,23 +56,29 @@ pipeline {
 		}
 
 		stage("Preparação") {
-			script {
-				runFile steps:this,
-					file: "${env.BUILDPACK}/prep.groovy"
+			steps {
+				script {
+					runFile steps:this,
+						file: "${env.BUILDPACK}/prep.groovy"
+				}
 			}
 		}
 
 		stage('Dependências') {
-			script {
-				runFile steps: this,
-					file: "${env.BUILDPACK}/deps.groovy"
+			steps {
+				script {
+					runFile steps: this,
+						file: "${env.BUILDPACK}/deps.groovy"
+				}
 			}
 		}
 
 		stage('Deploy') {
-			script {
-				runFile steps:this,
-					file: "${env.BUILDPACK}/deploy.groovy"
+			steps {
+				script {
+					runFile steps:this,
+						file: "${env.BUILDPACK}/deploy.groovy"
+				}
 			}
 		}
 	}
