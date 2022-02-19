@@ -1,8 +1,8 @@
 @Library("global") _
 
-node {
-
-
+pipeline {
+	agent any
+	
 	environment {
 		BUILDPACK = "azure-appservice"
 		PROJECT_TYPE = "azure-appservice-container"
