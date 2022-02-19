@@ -6,4 +6,4 @@ azure:
 
 docker:
   IMAGE_REGISTRY: mrinardo.azurecr.io
-  IMAGE_NAME: appsvc-tutorial:v3
+  IMAGE_NAME: appsvc-tutorial:v4
