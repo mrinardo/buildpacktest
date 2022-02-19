@@ -47,29 +47,33 @@ node {
 	    WARNING = "\033[1;93mWARNING\033[0m"
 	}
 
-
-	stage('Checkout') {
-		checkout scm
-	}
-
-	stage ("Preparação") {
-		script {
-			runFile steps:this,
-				file: "${env.BUILDPACK}/prep.groovy"
+	stages {
+		stage('Checkout') {
+			steps {
+				checkout scm
+				println this
+			}
 		}
-	}
 
-	stage('Dependências') {
-		script {
-			runFile steps: this,
-				file: "${env.BUILDPACK}/deps.groovy"
+		stage("Preparação") {
+			script {
+				runFile steps:this,
+					file: "${env.BUILDPACK}/prep.groovy"
+			}
 		}
-	}
 
-	stage('Deploy') {
-		script {
-			runFile steps:this,
-				file: "${env.BUILDPACK}/deploy.groovy"
+		stage('Dependências') {
+			script {
+				runFile steps: this,
+					file: "${env.BUILDPACK}/deps.groovy"
+			}
+		}
+
+		stage('Deploy') {
+			script {
+				runFile steps:this,
+					file: "${env.BUILDPACK}/deploy.groovy"
+			}
 		}
 	}
 
