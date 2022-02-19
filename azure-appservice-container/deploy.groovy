@@ -1,5 +1,5 @@
 try {
-    withCredentials([usernamePassword(credentialsId: 'MySP', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
+    withCredentials([usernamePassword(credentialsId: 'ACR_Credentials', passwordVariable: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID')]) {
         // Updates webapp with new Docker image via AZURE-CLI
         azureSetWebAppContainer steps: steps,
             resourceGroup: env.AZURE_RESOURCE_GROUP,
